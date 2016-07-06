@@ -1,0 +1,18 @@
+/**
+ * main
+ */
+.main{
+    width:100%;
+    position: absolute;
+    left:0;
+    top:60px;
+    bottom:0;
+    z-index: 9;
+    // font-family: $base-ff;
+    // background:red;
+    
+}
+
+@import'main-left';
+@import'main-mid';
+@import'main-right';

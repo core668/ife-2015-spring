@@ -1,0 +1,47 @@
+div, body, h1, h2, h3, ul, li {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style-type: none;
+}
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+html{
+    font-size:62.5%;
+}
+
+/**
+ * common
+ */
+body{
+    font-family:$base-ff;
+
+    //  safari mobile click flash bug
+    -webkit-tap-highlight-color: transparent;
+}
+button,select,input,textarea{
+    font-family: $base-ff;
+    outline: none;
+}
+
+i {
+    margin-right: 5px;
+}
+textarea:disabled {
+    color:#000;
+    background: #fff;
+    -webkit-text-fill-color: rgba(0, 0, 0, 1); 
+    -webkit-opacity: 1; 
+}
+
+// layout in main and modal
+%pos{
+    position: absolute;
+    left: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
