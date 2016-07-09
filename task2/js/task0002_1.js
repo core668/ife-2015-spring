@@ -1,41 +1,102 @@
-function showHobby() {
-    var text = $('.myTextArea').value;
-    text = text.replace(/[\s,，、;；]+/g, ' ');    // 将多项用空格分开
-    var hobby = text.split(' ');                  // 分割
-    hobby = uniqArray(hobby);                     // 去重
+/**
+ * @file task0002_1
+ * @author core668
+ */
 
-    if (hobby.length < 1) {                       // 错误处理
-        $('.error').innerHTML = '请输入至少一个爱好';
-    }
-    else if (hobby.length > 10) {
-        $('.error').innerHTML = '爱好数量不能超过10个';
+// step1
+
+function step1(e) {
+    var input = trim($('.step1 .ife-input').value);//取到输入框的值，并去掉首位空白符
+    var arr = input.split(',');//把字符串用半角逗号分割为字符串数组
+
+    arr = uniqArray(arr);//对数组进行去重操作，只考虑数组中元素为数字或字符串，返回一个去重后的数组
+    arr = filterArray(arr);//过滤掉数组中的空值
+
+    var output = arr.join(',');//用半角逗号将所有的数组元素连接成一个字符串
+    var p = document.createElement('p');//创建一个p元素
+    p.innerHTML = output;//将字符串加到字符串中
+
+    insertAfter(p, e.target);//插到事件目标后面
+
+}
+
+//给按钮绑定点击事件
+$.on('.step1 .ife-btn', 'click', step1);
+
+
+// step2
+
+function step2(e) {
+    var input = trim($('.step2 .ife-input').value);
+    var arr = input.split(/\n|\s|\ |\，|\,|\、|;/);
+
+    arr = uniqArray(arr);
+    arr = filterArray(arr);
+
+    var output = arr.join(',');
+    var p = document.createElement('p');
+    p.innerHTML = output;
+
+    insertAfter(p, e.target);
+
+}
+
+$.on('.step2 .ife-btn', 'click', step2);
+
+
+// step3
+
+function showErr(msg) {
+    if (msg) {
+        $('.ife-err').innerHTML = msg;
     }
     else {
-        $('.error').innerHTML = '';               // 删除旧元素
-        if ($('.result')) {
-            $('.center').removeChild($('.result'));
-        }
-
-        var result = document.createElement('div');
-        result.className = 'result';
-        var h3 = document.createElement('h3');
-        h3.innerHTML = '爱好：';
-        result.appendChild(h3);
-        for (var i = 0, len = hobby.length; i < len; i++) {
-            var checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            result.appendChild(checkbox);
-            var data = document.createTextNode(hobby[i] + ' ');
-            result.appendChild(data);
-        }
-        $('.center').appendChild(result);    // 注意减少页面重绘：用js 拼好，最好一次性 append 或者 innerHTML
+        $('.ife-err').innerHTML = '';
     }
 }
 
-function reset() {
-    $('.error').innerHTML = '';
-    $('.myTextArea').value = '';
-    if ($('.result')) {
-        $('.center').removeChild($('.result'));
+function step3(e) {
+
+    showErr();
+
+    var input = trim($('.step3 .ife-input').value);
+
+    if (!input) {
+        return showErr('输入不能空');
     }
+
+    var arr = input.split(/[，,、；\s\t\n]/);
+
+    arr = uniqArray(arr);
+    arr = filterArray(arr);
+
+    if (arr.length > 10) {
+        return showErr('用户输入的爱好数量不能超过10个');
+    }
+
+    var p = document.createElement('p');
+
+    each(arr, function (item, i) {
+        /*
+        <input type="checkbox" id="checkboxid0">
+        <label for="checkboxid0">1</label>
+         */
+
+        var checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.setAttribute('id', 'checkboxid' + i);
+        var label = document.createElement('label');
+        label.setAttribute('for', 'checkboxid' + i);
+        label.innerHTML = item;
+        p.appendChild(checkbox);
+        p.appendChild(label);
+
+    });
+
+
+    insertAfter(p, e.target);
+
 }
+
+
+$.on('.step3 .ife-btn', 'click', step3);

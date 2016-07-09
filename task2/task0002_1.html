@@ -1,39 +1,45 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Anotherhome</title>
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header class="header">
-        <div class="nav-wrap">
-            <h1 class="logo">
-                <a href="task0002_1.html"><img src="img/logo.png" alt="logo" width="200px"></a>
-            </h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="task0002_1.html">小练习1</a></li>
-                    <li><a href="task0002_2.html">小练习2</a></li>
-                    <li><a href="task0002_3.html">小练习3</a></li>
-                    <li><a href="task0002_4.html">小练习4</a></li>
-                    <li><a href="task0002_5.html">小练习5</a></li>
-                </ul>
-            </nav>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>task0002_1</title>
+        <script src="js/util.js"></script>
+        <link rel="stylesheet" href="css/task0002_1.css">
+    </head>
+    <body>
+        <h1>TASK0002_1</h1>
+        <div class="step1">
+            <h2>STEP 1</h2>
+            <pre>
+在页面中，有一个单行输入框，一个按钮，输入框中用来输入用户的兴趣爱好，允许用户用半角逗号来作为不同爱好的分隔。
+当点击按钮时，把用户输入的兴趣爱好，按照上面所说的分隔符分开后保存到一个数组，过滤掉空的、重复的爱好，在按钮下方创建一个段落显示处理后的爱好。
+            </pre>
+            <hr>
+            <input type="text" class="ife-input">
+            <input type="button" class="ife-btn" value="爱好">
         </div>
-        <a class="icon-github" href="https://github.com/DIYgod" target="_blank"><img src="img/icon-github.png"></a>
-    </header>
-    <div class="center">
-        <h2>小练习1 <a class="instruction" target="_blank" href="https://github.com/baidu-ife/ife/tree/master/task/task0002#%E5%B0%8F%E7%BB%83%E4%B9%A01">任务要求</a></h2>
-        <textarea class="myTextArea" placeholder="在此输入兴趣爱好"></textarea>
-        <div class="deal">
-            <button onclick="showHobby()">提交</button>
-            <button onclick="reset()">重置</button>
-            <div class="error"></div>
+        <div class="step2">
+            <h2>STEP 2</h2>
+            <pre>
+单行变成多行输入框，一个按钮，输入框中用来输入用户的兴趣爱好，允许用户用换行、空格（全角/半角）、逗号（全角/半角）、顿号、分号来作为不同爱好的分隔。
+当点击按钮时的行为同上
+            </pre>
+            <hr>
+            <textarea class="ife-input" cols="30" rows="10"></textarea>
+            <input type="button" class="ife-btn" value="爱好">
         </div>
-    </div>
-    <script src="js/util.js"></script>
-    <script src="js/task0002_1.js"></script>
-</body>
+        <div class="step3">
+            <h2>STEP 3</h2>
+            <pre>
+用户输入的爱好数量不能超过10个，也不能什么都不输入。当发生异常时，在按钮上方显示一段红色的错误提示文字，并且不继续执行后面的行为；当输入正确时，提示文字消失。
+同时，当点击按钮时，不再是输出到一个段落，而是每一个爱好输出成为一个checkbox，爱好内容作为checkbox的label。
+            </pre>
+            <hr>
+            <textarea class="ife-input" cols="30" rows="10"></textarea>
+            <div class="ife-err"></div>
+            <input type="button" class="ife-btn" value="爱好">
+        </div>
+
+        <script src="js/task0002_1.js"></script>
+    </body>
 </html>
